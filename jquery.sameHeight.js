@@ -3,7 +3,7 @@
 * @link https://github.com/smohadjer/jquery.sameHeight
 * @license http://opensource.org/licenses/MIT
 *
-* @version 0.0.1
+* @version 0.0.2
 *
 * based on: http://jqueryboilerplate.com/
 */
