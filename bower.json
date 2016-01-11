@@ -1,0 +1,22 @@
+{
+  "name": "sameHeight",
+  "version": "0.0.1",
+  "homepage": "https://github.com/smohadjer/sameHeight",
+  "authors": [
+    "Saeid Mohadjer <info@saeidmohadjer.com>"
+  ],
+  "description": "jQuery plugin for making elements same height",
+  "main": "jquery.sameHeight.js",
+  "keywords": [
+    "jquery plugin",
+    "same height"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

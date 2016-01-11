@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>SameHeight</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="../jquery.sameHeight.js"></script>
+		<script>
+			$(document).on('ready', function() {
+				$('.after').sameHeight();
+			});
+		</script>
+		<style>
+			/* demo styles (not required for plugin) */
+			body {
+				margin: 3%;
+			}
+
+			.wrapper:after {
+				content: " ";
+				display: table;
+				clear: both;
+			}
+
+			.wrapper > div {
+				background: #ccc;
+				box-sizing: border-box;
+				padding: 20px;
+				margin: 0 2% 0 0;
+				float: left;
+				width: 23%;
+			}
+		</style>
+    </head>
+    <body>
+		<h2>Before:</h2>
+		<div class="wrapper before">
+			<div>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>Lorem ipsum...</div>
+			<div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+			<div>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</div>
+		</div>
+
+		<h2>After:</h2>
+		<div class="wrapper after">
+			<div>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>Lorem ipsum...</div>
+			<div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+			<div>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</div>
+		</div>
+    </body>
+</html>
