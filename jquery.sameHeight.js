@@ -3,7 +3,7 @@
 * @link https://github.com/smohadjer/jquery.sameHeight
 * @license http://opensource.org/licenses/MIT
 *
-* @version 0.0.1
+* @version 0.0.2
 *
 * based on: http://jqueryboilerplate.com/
 */
@@ -47,7 +47,11 @@
 				self.setMinHeight();
 			});
 
-			self.setMinHeight();
+			//use setTimeout to make sure any code in stack is executed before
+			//calculating height
+			setTimeout(function() {
+				self.setMinHeight();
+			}, 0);
 		},
 
 		setMinHeight: function(){
