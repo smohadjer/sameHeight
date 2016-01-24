@@ -40,74 +40,62 @@
 	var methods = {
 		init: function() {
 			var self = this;
+			self.index = 0;
 
 			self.$elms = self.$element.children();
 
 			$(window).on('resize', function() {
-				self.setMinHeight();
+				//remove any previously set min-height
+				self.$elms.css({
+					'min-height': ''
+				});
+
+				self.setMinHeight(0);
 			});
 
 			//use setTimeout to make sure any code in stack is executed before
 			//calculating height
 			setTimeout(function() {
-				self.setMinHeight();
+				self.setMinHeight(0);
 			}, 0);
 		},
 
-		setMinHeight: function(){
+		setMinHeight: function(index){
 			var self = this;
+			var row = self.getRow(index);
+			var height = getHeightOfTallest(row);
 
-			self.$elms.css({
-				'min-height': ''
-			});
-
-			$.each(getRows(), function() {
-				var row = this;
-
-				//if there are more than one element in a row, set those elements
-				//to same height as tallets one
-				var minHeight = row.elms.length > 1 ? getHeightOfTallest(row.elms) : '';
-				$(row.elms).css({
-					'min-height': minHeight
+			$.each(row, function() {
+				$(this).css({
+					'min-height': height
 				});
 			});
 
-			//returns an array of objects containing elements in the same row
-			function getRows() {
-				var rows = [];
-
-				self.$elms.each(function() {
-					var elm = this;
-					var top = $(elm).position().top;
-					var rowFound = false;
-
-					//if rows array has a row object for current element add element
-					//to that row object's elms array
-					if (rows.length > 0) {
-						$.each(rows, function() {
-							var row = this;
-
-							if (row.top === top) {
-								row.elms.push(elm);
-								rowFound = true;
-								return false;
-							}
-						});
-					}
-
-					//if there is no row for current element in rows array add a
-					//new row object to rows array
-					if (!rowFound) {
-						var row = {};
-						row.top = top;
-						row.elms = [];
-						row.elms.push(elm);
-						rows.push(row);
-					}
-				});
-
-				return rows;
+			if (self.index < self.$elms.length - 1) {
+				self.setMinHeight(self.index);
 			}
+		},
+
+		getRow: function(index) {
+			var self = this;
+			var row = [];
+			var $first = self.$elms.eq(index);
+			var top = $first.position().top;
+
+			row.push($first);
+
+			self.$elms.slice(index + 1).each(function() {
+				var $elm = $(this);
+				if ($elm.position().top === top) {
+					row.push($elm);
+					self.index = $elm.index();
+				} else {
+					self.index = $elm.index();
+					return false;
+				}
+			});
+
+			return row;
 		}
 	};
 
