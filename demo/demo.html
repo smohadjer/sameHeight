@@ -9,83 +9,76 @@
         <script src="../jquery.sameHeight.js"></script>
 		<script>
 			$(document).on('ready', function() {
-				$('.after').sameHeight();
+				$('.same-height').sameHeight();
 			});
 		</script>
 		<style>
 			/* demo styles are not required for plugin) */
-			body {
-				margin: 3%;
-			}
-
-			.wrapper:after {
+			section:after {
 				content: " ";
 				display: table;
 				clear: both;
 			}
 
-			.wrapper > div {
+			section > div {
 				background: #ccc;
 				box-sizing: border-box;
-				padding: 20px;
-				margin-bottom: 2%;
+				padding: 1%;
+				margin-bottom: 1%;
 			}
 
 			@media (min-width: 480px) {
-				.wrapper > div {
-					margin: 0 2% 2% 0;
+				section > div {
+					margin: 0 1% 1% 0;
 					float: left;
 					width: 32%;
 				}
 
-				.wrapper > div:nth-child(3n) {
+				section > div:nth-child(3n) {
 					margin-right: 0;
 				}
 
-				.wrapper > div:nth-child(3n+1) {
+				section > div:nth-child(3n+1) {
 					clear: left;
 				}
 			}
 
-			@media (min-width: 768px) {
-				.wrapper > div {
-					background: #ccc;
-					box-sizing: border-box;
-					padding: 20px;
-					margin: 0 2% 0 0;
-					float: left;
-					width: 23%;
+			@media (min-width: 1024px) {
+				section > div {
+					margin: 0 1% 0 0;
+					width: 24%;
 				}
 
-				.wrapper > div:nth-child(3n+1) {
+				section > div:nth-child(3n+1) {
 					clear: none;
 				}
 
-				.wrapper > div:nth-child(3n) {
+				section > div:nth-child(3n) {
 					margin-right: 2%;
 				}
 
-				.wrapper > div:nth-child(4n) {
+				section > div:nth-child(4n) {
 					margin-right: 0;
 				}
 			}
 		</style>
     </head>
     <body>
+		<h1>sameHeight plugin applied to cells in a responsive grid</h1>
 		<h2>Before:</h2>
-		<div class="wrapper before">
+		<section>
 			<div>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 			<div>Lorem ipsum...</div>
 			<div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
 			<div>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</div>
-		</div>
+		</section>
 
 		<h2>After:</h2>
-		<div class="wrapper after">
+		<section class="same-height">
 			<div>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 			<div>Lorem ipsum...</div>
 			<div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
 			<div>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</div>
-		</div>
+		</section>
     </body>
 </html>
