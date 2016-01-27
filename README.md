@@ -1,5 +1,5 @@
 #sameHeight
-A jQuery plugin for better alignment of cells in a grid. Plugin looks at children of a container and if they are visually in the same row, it makes them all as tall as the tallest one in the row (using css min-height). This also solves common problem of floated cells in a grid getting stuck after one another due to height difference.
+A jQuery plugin for better alignment of cells in a grid. It looks at children of the container it's applied to and if they are visually in the same row (should find at least two elements beside one another), it makes them all as tall as the tallest one in the row (via css min-height). This also solves common problem of floated cells in a grid getting stuck after one another due to height difference.
 
 ##Examples
 - [Applied to cells in a responsive grid (oneHeightForAll: true)] (http://smohadjer.github.io/sameHeight/demo/demo1.html)
