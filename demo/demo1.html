@@ -9,24 +9,35 @@
         <script src="../jquery.sameHeight.js"></script>
 		<script>
 			$(document).on('ready', function() {
-				$('.same-height').sameHeight({
-					oneHeightForAll: true
+				//apply plugin
+				$('button.apply').on('click', function() {
+					$('ul').sameHeight({
+						oneHeightForAll: true
+					});
+				});
+
+				//destroy plugin
+				$('button.destroy').on('click', function() {
+					var plugin = $('ul').data('plugin_sameHeight');
+					if (plugin) {
+						plugin.destroy();
+					}
 				});
 			});
 		</script>
 		<style>
 			/* demo styles are not required for plugin) */
-			section:after {
+			ul:after {
 				content: " ";
 				display: table;
 				clear: both;
 			}
 
-			section ul {
+			ul {
 				padding: 0;
 			}
 
-			section li {
+			li {
 				background: #ccc;
 				box-sizing: border-box;
 				padding: 1%;
@@ -35,62 +46,52 @@
 			}
 
 			@media (min-width: 480px) {
-				section li {
+				li {
 					margin: 0 1% 1% 0;
 					float: left;
 					width: 32%;
 				}
 
-				section li:nth-child(3n) {
+				li:nth-child(3n) {
 					margin-right: 0;
 				}
 
-				section li:nth-child(3n+1) {
+				li:nth-child(3n+1) {
 					clear: left;
 				}
 			}
 
 			@media (min-width: 1024px) {
-				section li {
-					margin: 0 1% 0 0;
+				li {
+					margin: 0 1% 1% 0;
 					width: 24%;
 				}
 
-				section li:nth-child(3n+1) {
+				li:nth-child(3n+1) {
 					clear: none;
 				}
 
-				section li:nth-child(3n) {
-					margin-right: 2%;
+				li:nth-child(3n) {
+					margin-right: 1%;
 				}
 
-				section li:nth-child(4n) {
-					margin-right: 0;
+				li:nth-child(4n+1) {
+					clear: left;
 				}
 			}
 		</style>
     </head>
     <body>
-		<h1>sameHeight plugin applied to list items with "oneHeightForAll" option set to true</h1>
-		<button>Destory</button>
-		<section>
-			<h2>Before:</h2>
-			<ul>
-				<li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-				<li>Lorem ipsum...</li>
-				<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-				<li>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</li>
-			</ul>
-		</section>
-
-		<section>
-			<h2>After:</h2>
-			<ul class="same-height">
-				<li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-				<li>Lorem ipsum...</li>
-				<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-				<li>Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</li>
-			</ul>
-		</section>
+		<h1>Example of using sameHeight plugin with "oneHeightForAll" option set to true</h1>
+		<p>Apply or destroy plugin using below buttons. This demo has a responsive layout with 1 colmn < 480, 3 columns above 480, and 4 columns above 1024. Plugin has no effect below 480 as there is only one column in this resolution.</p>
+		<button class="apply">Apply sameHeight</button>
+		<button class="destroy">Remove sameHeight</button>
+		<ul>
+			<li>1. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+			<li>2. Lorem ipsum...</li>
+			<li>3. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+			<li>4. Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</li>
+			<li>5. Lorem ipsum...</li>
+		</ul>
     </body>
 </html>
