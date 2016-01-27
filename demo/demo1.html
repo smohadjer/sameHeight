@@ -9,7 +9,9 @@
         <script src="../jquery.sameHeight.js"></script>
 		<script>
 			$(document).on('ready', function() {
-				$('.same-height').sameHeight();
+				$('.same-height').sameHeight({
+					oneHeightForAll: true
+				});
 			});
 		</script>
 		<style>
