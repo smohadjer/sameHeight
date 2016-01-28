@@ -3,16 +3,21 @@
 * @link https://github.com/smohadjer/jquery.sameHeight
 * @license http://opensource.org/licenses/MIT
 *
-* @version 0.0.3
+* @version 0.0.4
 *
 * based on: http://jqueryboilerplate.com/
+* jQuery plugin for making adjacent elements the same height. By default elements
+* in different rows can have different heights, but if oneHeightForAll is set to
+* true then all elements have the same height.
 */
 
 ;(function ($, window, document, undefined) {
 	'use strict';
 
 	var pluginName = 'sameHeight',
-		defaults = {};
+		defaults = {
+			oneHeightForAll: false
+		};
 
 	//private method
 	var getHeightOfTallest = function(elms) {
@@ -44,25 +49,32 @@
 
 			self.$elms = self.$element.children();
 
-			$(window).on('resize', function() {
+			$(window).on('resize.' + pluginName, function() {
 				//remove any previously set min-height
 				self.$elms.css({
 					'min-height': ''
 				});
 
-				self.setMinHeight(0);
+				//if there are adjacent elements
+				if (self.getRow(0).length > 1) {
+					self.setMinHeight(0);
+				}
 			});
 
 			//use setTimeout to make sure any code in stack is executed before
 			//calculating height
 			setTimeout(function() {
-				self.setMinHeight(0);
+				//if there are adjacent elements
+				if (self.getRow(0).length > 1) {
+					self.setMinHeight(0);
+				}
 			}, 0);
 		},
 
 		setMinHeight: function(index){
 			var self = this;
-			var row = self.getRow(index);
+			var row = self.options.oneHeightForAll ? self.$elms : self.getRow(index);
+
 			var height = getHeightOfTallest(row);
 
 			$.each(row, function() {
@@ -71,7 +83,7 @@
 				});
 			});
 
-			if (self.index < self.$elms.length - 1) {
+			if (!self.options.oneHeightForAll && self.index < self.$elms.length - 1) {
 				self.setMinHeight(self.index);
 			}
 		},
@@ -96,6 +108,18 @@
 			});
 
 			return row;
+		},
+
+		destroy: function() {
+			var self = this;
+			//remove event handlers
+			$(window).off('resize.' + pluginName);
+
+			//remove dom changes
+			self.$elms.css({
+				'min-height': ''
+			});
+			self.$element.removeData('plugin_' + pluginName);
 		}
 	};
 

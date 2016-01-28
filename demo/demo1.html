@@ -11,7 +11,9 @@
 			$(document).on('ready', function() {
 				//apply plugin
 				$('button.apply').on('click', function() {
-					$('ul').sameHeight();
+					$('ul').sameHeight({
+						oneHeightForAll: true
+					});
 				});
 
 				//destroy plugin
@@ -37,17 +39,51 @@
 
 			li {
 				background: #ccc;
+				box-sizing: border-box;
 				padding: 1%;
-				float: left;
-				width: 30%;
-				margin: 0 1% 1% 0;
+				margin-bottom: 1%;
 				list-style: none;
 			}
+
+			@media (min-width: 480px) {
+				li {
+					margin: 0 1% 1% 0;
+					float: left;
+					width: 32%;
+				}
+
+				li:nth-child(3n) {
+					margin-right: 0;
+				}
+
+				li:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+
+			@media (min-width: 1024px) {
+				li {
+					margin: 0 1% 1% 0;
+					width: 24%;
+				}
+
+				li:nth-child(3n+1) {
+					clear: none;
+				}
+
+				li:nth-child(3n) {
+					margin-right: 1%;
+				}
+
+				li:nth-child(4n+1) {
+					clear: left;
+				}
+			}
 		</style>
-	</head>
-	<body>
-		<h1>sameHeight plugin fixing float problem</h1>
-		<p>Apply or destroy plugin using below buttons. Note that elements in each row have the same height, but height in each row can vary (use option oneHeightForAll: true if you want all rows have the same height). Plugin has no effect below 480 as there is only one column in this resolution.</p>
+    </head>
+    <body>
+		<h1>Example of using sameHeight plugin with "oneHeightForAll" option set to true</h1>
+		<p>Apply or destroy plugin using below buttons. This demo has a responsive layout with 1 colmn < 480, 3 columns above 480, and 4 columns above 1024. Plugin has no effect below 480 as there is only one column in this resolution.</p>
 		<button class="apply">Apply sameHeight</button>
 		<button class="destroy">Remove sameHeight</button>
 		<ul>
@@ -57,5 +93,5 @@
 			<li>4. Excepteur sint occaeca qui officia deserunt mollit anim id est laborum.</li>
 			<li>5. Lorem ipsum...</li>
 		</ul>
-	</body>
+    </body>
 </html>
