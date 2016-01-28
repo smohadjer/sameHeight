@@ -20,3 +20,10 @@ $('.parent-element').sameHeight({
 	oneHeightForAll: true
 });
 ```
+
+Public methods:
+```javascript
+//remove plugin and reset all DOM changes 
+.destroy()
+
+```
