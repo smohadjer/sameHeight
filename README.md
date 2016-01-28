@@ -2,8 +2,8 @@
 A jQuery plugin for better alignment of elements in a responsive layout. It looks at children of the container it's applied to and if they are visually in the same row (should find at least two elements beside one another), it makes them all as tall as the tallest element in that row (via css min-height). This also solves common problem of floated cells getting stuck after one another due to height differences. 
 
 ##Examples
-- [Applied to cells in a responsive grid (oneHeightForAll: true)] (http://smohadjer.github.io/sameHeight/demo/demo1.html)
-- [fixing float problem] (http://smohadjer.github.io/sameHeight/demo/demo2.html)
+- [Applying to all elements (option oneHeightForAll: true)] (http://smohadjer.github.io/sameHeight/demo/demo1.html)
+- [Applying to elements in the same row (default behavior)] (http://smohadjer.github.io/sameHeight/demo/demo2.html)
 
 ##Usage
 ```javascript
