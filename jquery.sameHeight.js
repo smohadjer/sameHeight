@@ -3,7 +3,7 @@
 * @link https://github.com/smohadjer/jquery.sameHeight
 * @license http://opensource.org/licenses/MIT
 *
-* @version 0.0.4
+* @version 0.0.5
 *
 * based on: http://jqueryboilerplate.com/
 * jQuery plugin for making adjacent elements the same height. By default elements
