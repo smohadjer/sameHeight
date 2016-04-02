@@ -9,8 +9,21 @@
         <script src="../jquery.sameHeight.js"></script>
 		<script>
 			$(document).on('ready', function() {
-				//apply plugin
-				$('button.apply').on('click', function() {
+				$('button.apply-default').on('click', function() {
+					var plugin = $('ul').data('plugin_sameHeight');
+					if (plugin) {
+						plugin.destroy();
+					}
+
+					$('ul').sameHeight();
+				});
+
+				$('button.apply-custom').on('click', function() {
+					var plugin = $('ul').data('plugin_sameHeight');
+					if (plugin) {
+						plugin.destroy();
+					}
+
 					$('ul').sameHeight({
 						oneHeightForAll: true,
 						useCSSHeight: true
@@ -83,9 +96,11 @@
 		</style>
     </head>
     <body>
-		<h1>Example of using sameHeight plugin with "oneHeightForAll" option set to true</h1>
-		<p>Apply or destroy plugin using below buttons. This demo has a responsive layout with 1 colmn < 480, 3 columns above 480, and 4 columns above 1024. Plugin has no effect below 480 as there is only one column in this resolution.</p>
-		<button class="apply">Apply sameHeight</button>
+		<p>Apply or destroy plugin using below buttons. This demo has a responsive layout with 1 colmn < 480, 3 columns above 480, and 4 columns above 1024. By default plugin looks at children of the container it's applied to and if they are visually in the same row, it makes them all as tall as the tallest element in that row. If option "oneHeightForAll" is set to true plugin doesn't look at rows and makes all children the same height regardless of whether they are in the same row or not. By default height is adjusted using css property "min-height", but this can be changed to "height" by setting option "useCSSHeight" to true. This plugin also solves common problem of floated cells getting stuck after one another due to height differences.</p>
+		<button class="apply-default">Apply sameHeight (default settings)</button>
+
+		<button class="apply-custom">Apply sameHeight (custom settings)</button>
+
 		<button class="destroy">Remove sameHeight</button>
 		<ul>
 			<li>1. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
