@@ -21,7 +21,12 @@ $('.parent-element').sameHeight({
 
 	//this option by default is false. If set to true css height will be
 	//used instead of min-height to change height of elements.
-	useCSSHeight: true
+	useCSSHeight: true,
+
+	//this function will be called every time height is adjusted
+	callback: function() {
+		//do something here...
+	}
 });
 ```
 

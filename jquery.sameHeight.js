@@ -3,7 +3,7 @@
 * @link https://github.com/smohadjer/jquery.sameHeight
 * @license http://opensource.org/licenses/MIT
 *
-* @version 0.0.7
+* @version 0.0.8
 *
 * based on: http://jqueryboilerplate.com/
 * jQuery plugin for making adjacent elements the same height. By default elements
@@ -55,21 +55,25 @@
 			$(window).on('resize.' + pluginName, function() {
 				//remove previously set height or min-height
 				self.$elms.css(self.cssProperty, '');
-
-				//if there are adjacent elements
-				if (self.getRow(0).length > 1) {
-					self.setMinHeight(0);
-				}
+				initSameHeight();
 			});
 
 			//use setTimeout to make sure any code in stack is executed before
 			//calculating height
 			setTimeout(function() {
+				initSameHeight();
+			}, 0);
+
+			function initSameHeight() {
 				//if there are adjacent elements
 				if (self.getRow(0).length > 1) {
 					self.setMinHeight(0);
+
+					if (self.options.callback) {
+						self.options.callback();
+					}
 				}
-			}, 0);
+			}
 		},
 
 		setMinHeight: function(index){
