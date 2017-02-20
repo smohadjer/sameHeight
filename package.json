@@ -1,0 +1,19 @@
+{
+  "name": "same-height",
+  "version": "0.0.9",
+  "description": "A jQuery plugin for better vertical alignment of elements in responsive layouts. By default plugin looks at children of the container it's applied to and if they are visually in the same row, it makes them all as tall as the tallest element in that row. If option \"oneHeightForAll\" is set to true plugin doesn't look at rows and makes all children the same height regardless of whether they are in the same row or not. By default height is adjusted using css property \"min-height\", but this can be changed to \"height\" by setting option \"useCSSHeight\" to true. This plugin also solves common problem of floated cells getting stuck after one another due to height differences.",
+  "main": "jquery.sameHeight.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smohadjer/sameHeight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smohadjer/sameHeight/issues"
+  },
+  "homepage": "https://github.com/smohadjer/sameHeight#readme"
+}
